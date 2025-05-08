@@ -1,0 +1,82 @@
+<div class="cart">
+  <div class="container">
+    <div class="cart__header">
+      <h1>Your Cart</h1>
+    </div>
+
+    {% if cart.item_count > 0 %}
+      <form action="/cart" method="post" novalidate>
+        <div class="cart__items">
+          {% for item in cart.items %}
+            <div class="cart__item">
+              <div class="cart__item-image">
+                {% if item.image != blank %}
+                  <img src="{{ item.image | img_url: 'small' }}" alt="{{ item.title }}">
+                {% else %}
+                  {{ 'product-1' | placeholder_svg_tag }}
+                {% endif %}
+              </div>
+
+              <div class="cart__item-details">
+                <h3>
+                  <a href="{{ item.url }}">{{ item.product.title }}</a>
+                </h3>
+
+                {% if item.product.has_only_default_variant == false %}
+                  <p>{{ item.variant.title }}</p>
+                {% endif %}
+
+                <p>{{ item.final_price | money }}</p>
+              </div>
+
+              <div class="cart__item-quantity">
+                <label for="updates_{{ item.key }}">Quantity</label>
+                <input
+                  type="number"
+                  name="updates[{{ item.key }}]"
+                  id="updates_{{ item.key }}"
+                  value="{{ item.quantity }}"
+                  min="0"
+                >
+              </div>
+
+              <div class="cart__item-total">
+                <p>{{ item.final_line_price | money }}</p>
+              </div>
+
+              <div class="cart__item-remove">
+                <a href="/cart/change?line={{ forloop.index }}&quantity=0">Remove</a>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="cart__footer">
+          <div class="cart__subtotal">
+            <p>Subtotal: {{ cart.total_price | money }}</p>
+          </div>
+
+          <div class="cart__update">
+            <button type="submit" name="update">Update Cart</button>
+          </div>
+
+          <div class="cart__checkout">
+            <button type="submit" name="checkout">Checkout</button>
+          </div>
+        </div>
+      </form>
+    {% else %}
+      <div class="cart__empty">
+        <p>Your cart is currently empty.</p>
+        <a href="/collections/all">Continue shopping</a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Cart",
+  "settings": []
+}
+{% endschema %}

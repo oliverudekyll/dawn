@@ -1,0 +1,38 @@
+<div class="header">
+  <div class="container">
+    <div class="header__logo">
+      <a href="/">
+        {% if section.settings.logo != blank %}
+          <img src="{{ section.settings.logo | img_url: '200x' }}" alt="{{ shop.name }}">
+        {% else %}
+          <span>{{ shop.name }}</span>
+        {% endif %}
+      </a>
+    </div>
+
+    <nav class="header__nav">
+      {% for link in linklists[section.settings.menu].links %}
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      {% endfor %}
+    </nav>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    }
+  ]
+}
+{% endschema %}

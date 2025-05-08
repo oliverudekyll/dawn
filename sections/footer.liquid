@@ -1,0 +1,40 @@
+<div class="footer">
+  <div class="container">
+    <div class="footer__content">
+      <div class="footer__copyright">
+        <p>
+          &copy; {{ 'now' | date: '%Y' }}
+          {{ shop.name }}
+        </p>
+      </div>
+
+      {% if section.settings.show_social_links %}
+        <div class="footer__social">
+          {% if settings.social_twitter_link != blank %}
+            <a href="{{ settings.social_twitter_link }}" target="_blank">Twitter</a>
+          {% endif %}
+          {% if settings.social_facebook_link != blank %}
+            <a href="{{ settings.social_facebook_link }}" target="_blank">Facebook</a>
+          {% endif %}
+          {% if settings.social_instagram_link != blank %}
+            <a href="{{ settings.social_instagram_link }}" target="_blank">Instagram</a>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_social_links",
+      "label": "Show social links",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,17 @@
+{
+  "current": {
+    "primary_color": "#000000",
+    "secondary_color": "#ffffff",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {}
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {}
+      }
+    },
+    "content_for_index": []
+  }
+} 
