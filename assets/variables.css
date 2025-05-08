@@ -1,0 +1,33 @@
+:root {
+  --font-size-body: 1.375rem;
+  --font-size-title: 7rem;
+  --font-line-height-body: 1;
+  --font-weight-regular: 400;
+  --font-weight-thin: 300;
+
+  --padding: 1.5rem;
+  --padding-xs: calc(var(--padding) * 0.25);
+  --padding-sm: calc(var(--padding) * 0.5);
+  --padding-md: calc(var(--padding) * 1.5);
+  --padding-lg: calc(var(--padding) * 2);
+  --padding-xl: calc(var(--padding) * 3);
+  --padding-xxl: calc(var(--padding) * 4);
+
+  --color-blue: #3258ff;
+  --color-teal: #00879e;
+  --color-grey: #b6b8b7;
+  --color-green: #018d44;
+  --color-black: #232324;
+  --color-orange: #d9480a;
+  --color-offbrown: #bb4f3d;
+  --color-peach: #f38659;
+  --color-brown: #815b12;
+  --color-lily: #e5c2ff;
+  --color-purple: #9b15ef;
+  --color-magenta: #ee04a7;
+  --color-lime: #b8ff67;
+  --color-light: #e7ecd8;
+  --color-red: #d7013f;
+  --color-yellow: #efbb04;
+  --color-body-light: var(--color-light);
+}

@@ -1,0 +1,71 @@
+body {
+  font-family: "GTAlpinaTypeWriter" !important;
+}
+
+body * {
+  box-sizing: border-box;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+
+  display: flex;
+  background-color: rebeccapurple;
+}
+
+.header__logo-wrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  padding: var(--padding-lg);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+
+  background-color: var(--color-magenta);
+}
+
+.header__title {
+  font-size: var(--font-size-title);
+}
+
+.header__nav-wrapper {
+  position: relative;
+  /* height: 100%; */
+  width: 100%;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  background-color: var(--color-peach);
+}
+
+.header__nav {
+  width: 100%;
+  max-width: 75%;
+  padding: var(--padding-lg);
+
+  display: flex;
+  justify-content: flex-end;
+}
+
+.header__nav-item {
+  width: 100%;
+  max-width: 200px;
+  height: 100%;
+  padding: var(--padding-sm);
+  padding-bottom: var(--padding-lg);
+
+  display: flex;
+  justify-content: flex-start;
+  background-color: var(--color-brown);
+
+  color: var(--color-body-light);
+}
