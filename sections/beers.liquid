@@ -1,0 +1,145 @@
+{% comment %}
+  This section displays beer metaobjects on the beers page
+{% endcomment %}
+
+<div class="beers-section">
+  <div class="container">
+    <div class="beers-grid">
+      {% assign beers = metaobjects.beer.values %}
+
+      {% if beers.size > 0 %}
+        {% for beer in beers %}
+          <div class="beer-card">
+            {% if beer.image %}
+              <div class="beer-card__image">
+                <img
+                  src="{{ beer.image | img_url: '400x' }}"
+                  alt="{{ beer.name.value }}"
+                  width="400"
+                  height="400"
+                  loading="lazy"
+                >
+              </div>
+            {% endif %}
+
+            <div class="beer-card__content">
+              <h3 class="beer-card__title">{{ beer.name.value }}</h3>
+
+              {% if beer.style.value != blank %}
+                <p class="beer-card__style">{{ beer.style.value }}</p>
+              {% endif %}
+
+              {% if beer.abv.value != blank %}
+                <p class="beer-card__abv">ABV: {{ beer.abv.value }}%</p>
+              {% endif %}
+
+              {% if beer.description.value != blank %}
+                <div class="beer-card__description">
+                  {{ beer.description.value }}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="beers-empty">
+          <p>No beers found.</p>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .beers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+  }
+
+  .beer-card {
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .beer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .beer-card__image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .beer-card__content {
+    padding: 20px;
+  }
+
+  .beer-card__title {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+  }
+
+  .beer-card__style {
+    color: #666;
+    margin-bottom: 5px;
+  }
+
+  .beer-card__abv {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .beer-card__description {
+    color: #333;
+    line-height: 1.5;
+  }
+
+  .beers-empty {
+    text-align: center;
+    padding: 50px 0;
+    grid-column: 1 / -1;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Beers Collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Our Beers"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        {
+          "value": "grid",
+          "label": "Grid"
+        },
+        {
+          "value": "list",
+          "label": "List"
+        }
+      ],
+      "default": "grid"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Beers Collection",
+      "category": "Custom Content"
+    }
+  ]
+}
+{% endschema %}
