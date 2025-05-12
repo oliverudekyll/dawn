@@ -3,12 +3,13 @@
 {% endcomment %}
 
 <div class="drinks-page">
-  <h1>{{ handle | capitalize }}</h1>
+  <h1>{{ blogs[handle].title }}</h1>
   {% assign length = blogs[handle].articles.size %}
   <p>Length: {{ length }}</p>
 
   <div class="articles-grid">
-    {% assign articles = blogs[handle].articles %}
+    {% assign rawArticles = blogs[handle].articles %}
+    {% assign articles = rawArticles | sort: 'title' %}
     {% if articles.size > 0 %}
       {% for article in articles %}
         <a href="{{article.url}}">

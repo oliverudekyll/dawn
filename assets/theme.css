@@ -48,6 +48,15 @@ body * {
   background-color: var(--color-magenta);
 }
 
+@keyframes poleScroll {
+  from {
+    background-position-x: -100%;
+  }
+  to {
+    background-position-x: 0;
+  }
+}
+
 .header__pole {
   height: var(--padding);
   width: 100%;
@@ -59,6 +68,16 @@ body * {
     var(--color-body-light) 12.5%,
     var(--color-body-light) 25%
   );
+  background: repeating-linear-gradient(
+    to right,
+    var(--color-red) 0%,
+    var(--color-red) 6.249%,
+    var(--color-body-light) 6.25%,
+    var(--color-body-light) 12.5%
+  );
+  background-size: 200% 100%;
+  animation: poleScroll 1s ease-in-out;
+  animation: poleScroll 1.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .header__title {
