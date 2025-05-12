@@ -1,0 +1,51 @@
+{% comment %}
+  This section displays drink metaobjects on the drinks page
+{% endcomment %}
+
+<div class="drinks-section">
+  <div class="container">
+    <h2>Debug Info:</h2>
+    <p>Current blog: {{ blog.handle }}</p>
+    <p>Articles size: {{ blog.articles.size }}</p>
+
+    {% for article in blog.articles %}
+      <div></div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Drinks Collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Our Drinks"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        {
+          "value": "grid",
+          "label": "Grid"
+        },
+        {
+          "value": "list",
+          "label": "List"
+        }
+      ],
+      "default": "grid"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Drinks Collection",
+      "category": "Custom Content"
+    }
+  ]
+}
+{% endschema %}
