@@ -9,7 +9,7 @@ body * {
   box-sizing: border-box;
 }
 
-header {
+.header {
   position: sticky;
   top: 0;
   left: 0;
@@ -17,6 +17,7 @@ header {
   width: 100%;
 
   display: flex;
+  z-index: 999;
 }
 
 #shopify-section-header {
@@ -97,6 +98,22 @@ header {
   background-color: var(--color-brown);
 
   color: var(--color-body-light);
+}
+
+.header__nav-item:nth-child(2) {
+  background-color: var(--color-red);
+}
+
+.header__nav-item:nth-child(3) {
+  background-color: var(--color-teal);
+}
+
+.header__nav-item:nth-child(4) {
+  background-color: var(--color-black);
+}
+
+.header__nav-item:nth-child(5) {
+  background-color: var(--color-purple);
 }
 
 .footer-decorative {

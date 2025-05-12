@@ -1,0 +1,9 @@
+<header>
+  <h1>{{ article.title }}</h1>
+</header>
+<main>
+  <img src="{{ article.image | img_url: '300x300' }}">
+  <p>
+    {{ article.content | strip_html }}
+  </p>
+</main>
