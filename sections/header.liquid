@@ -19,7 +19,7 @@
 
   <div class="header__nav-wrapper">
     <nav class="header__nav">
-      {% for link in linklists[section.settings.menu].links %}
+      {% for link in linklists['main-menu'].links %}
         <a class="header__nav-item" href="{{ link.url }}">{{ link.title }}</a>
       {% endfor %}
     </nav>
