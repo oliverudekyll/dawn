@@ -1,0 +1,117 @@
+{% comment %}
+  This section displays a single beer based on the slug in the URL
+{% endcomment %}
+
+{% assign slug = page.handle | split: '-beer-' | last %}
+{% assign beer_found = false %}
+
+{% for beer in metaobjects.beers.values %}
+  {% if beer.handle == slug %}
+    {% assign beer_found = true %}
+
+    <div class="single-beer-container">
+      <div class="beer-image">
+        {% if beer.thumbnail.value != blank %}
+          <img
+            src="{{ beer.thumbnail.value | img_url: '600x600' }}"
+            width="600"
+            height="600"
+            alt="{{ beer.title.value }}"
+            loading="lazy"
+          >
+        {% else %}
+          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+      </div>
+
+      <div class="beer-details">
+        <h1>{{ beer.title.value }}</h1>
+
+        {% if beer.brewery.value != blank %}
+          <p class="brewery">{{ beer.brewery.value }}</p>
+        {% endif %}
+
+        {% if beer.style.value != blank %}
+          <p class="style">Style: {{ beer.style.value }}</p>
+        {% endif %}
+
+        {% if beer.abv.value != blank %}
+          <p class="abv">ABV: {{ beer.abv.value }}%</p>
+        {% endif %}
+
+        {% if beer.description.value != blank %}
+          <div class="description">
+            {{ beer.description.value }}
+          </div>
+        {% endif %}
+
+        <a href="/pages/drinks" class="back-link">Back to all beers</a>
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}
+
+{% unless beer_found %}
+  <div class="beer-not-found">
+    <h1>Beer not found</h1>
+    <p>Sorry, we couldn't find the beer you're looking for.</p>
+    <a href="/pages/drinks" class="back-link">Back to all beers</a>
+  </div>
+{% endunless %}
+
+<style>
+  .single-beer-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  .beer-image {
+    flex: 1;
+    min-width: 300px;
+  }
+
+  .beer-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .beer-details {
+    flex: 1;
+    min-width: 300px;
+  }
+
+  .brewery {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .description {
+    margin: 1.5rem 0;
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.5rem 1rem;
+    background: #f5f5f5;
+    text-decoration: none;
+    border-radius: 4px;
+  }
+
+  .beer-not-found {
+    text-align: center;
+    padding: 4rem 1rem;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Beer Detail",
+  "settings": []
+}
+{% endschema %}

@@ -1,4 +1,7 @@
 body {
+  /* Decorative footer offset */
+  padding-bottom: var(--padding-lg) !important;
+
   font-family: "GTAlpinaTypeWriter" !important;
 }
 
@@ -6,11 +9,22 @@ body * {
   box-sizing: border-box;
 }
 
-.header {
+header {
   position: sticky;
   top: 0;
   left: 0;
   right: 0;
+  width: 100%;
+
+  display: flex;
+}
+
+#shopify-section-header {
+  width: 100%;
+}
+
+.header-container {
+  position: relative;
   width: 100%;
 
   display: flex;
@@ -26,9 +40,24 @@ body * {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-flow: column nowrap;
   flex: 1;
+  gap: 1rem;
 
   background-color: var(--color-magenta);
+}
+
+.header__pole {
+  height: var(--padding);
+  width: 100%;
+
+  background: repeating-linear-gradient(
+    to right,
+    var(--color-red) 0%,
+    var(--color-red) 12.499%,
+    var(--color-body-light) 12.5%,
+    var(--color-body-light) 25%
+  );
 }
 
 .header__title {
@@ -68,4 +97,23 @@ body * {
   background-color: var(--color-brown);
 
   color: var(--color-body-light);
+}
+
+.footer-decorative {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: var(--padding-lg);
+
+  background: linear-gradient(
+    var(--color-lime) 0%,
+    var(--color-lime) 49.99%,
+    var(--color-blue) 50%,
+    var(--color-blue) 100%
+  );
+
+  pointer-events: none;
+  z-index: 999;
 }
