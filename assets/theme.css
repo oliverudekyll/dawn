@@ -117,6 +117,7 @@ body * {
   background-color: var(--color-brown);
 
   color: var(--color-body-light);
+  white-space: nowrap;
 }
 
 .header__nav-item:nth-child(2) {
