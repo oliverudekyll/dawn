@@ -2,11 +2,18 @@
   This section displays a single beer based on the slug in the URL
 {% endcomment %}
 
-{% assign slug = page.handle | split: '-beer-' | last %}
+{% assign slug = page.handle | split: 'beer-' | last %}
 {% assign beer_found = false %}
 
+{% comment %}Debug info{% endcomment %}
+<p style="display: none;">Looking for slug: {{ slug }}</p>
+
 {% for beer in metaobjects.beers.values %}
-  {% if beer.handle == slug %}
+  {% assign beer_id_handle = beer.id | handle %}
+  {% comment %}Debug info{% endcomment %}
+  <p style="display: none;">Checking: {{ beer_id_handle }} vs {{ slug }}</p>
+
+  {% if beer_id_handle == slug %}
     {% assign beer_found = true %}
 
     <div class="single-beer-container">

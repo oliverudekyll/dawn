@@ -4,31 +4,31 @@
 
 <div class="drinks-page">
   <h1>{{ handle | capitalize }}</h1>
-  {% assign length = blogs[handle].articles.size %}
+  {% assign length = metaobjects[handle].size %}
   <p>Length: {{ length }}</p>
+  <p>Array: {{ metaobjects.wines.values.size }}</p>
 
   <div class="articles-grid">
-    {% assign articles = blogs[handle].articles %}
-    {% if articles.size > 0 %}
-      {% for article in articles %}
-        <a href="{{article.url}}">
-          <article>
-            <img
-              src="{{ article.image | img_url: '300x300' }}"
-              width="300"
-              height="300"
-              alt="{{ article.title }}"
-            >
-            <h2>
-              {{ article.title }}
-            </h2>
-            <p>
-              {{ article.content | strip_html }}
-            </p>
-          </article>
-        </a>
-      {% endfor %}
-    {% endif %}
+    {% assign beers = metaobjects[handle].values %}
+
+    {% for beer in beers %}
+      <a href="#">
+        <article>
+          <img
+            src="{{ beer.thumbnail | img_url: '300x300' }}"
+            width="300"
+            height="300"
+            alt="{{ beer.title.value }}"
+          >
+          <h2>
+            {{ beer.title.value }}
+          </h2>
+          <p>
+            {{ beer.description.value }}
+          </p>
+        </article>
+      </a>
+    {% endfor %}
   </div>
 </div>
 
