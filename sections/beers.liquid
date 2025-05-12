@@ -4,48 +4,34 @@
 
 <div class="beers-section">
   <div class="container">
+    <h2>Debug Info:</h2>
+    <p>Metaobjects.drinks size: {{ blog.beers.size }}</p>
+
+    {% for article in blogs.beers.articles %}
+      <p>{{ blogs.beers.articles.size }}</p>
+      <p>{{ article.title }}</p>
+      <p>{{ article.content }}</p>
+    {% endfor %}
+
     <div class="beers-grid">
-      {% assign beers = metaobjects.beer.values %}
-
-      {% if beers.size > 0 %}
-        {% for beer in beers %}
-          <div class="beer-card">
-            {% if beer.image %}
-              <div class="beer-card__image">
-                <img
-                  src="{{ beer.image | img_url: '400x' }}"
-                  alt="{{ beer.name.value }}"
-                  width="400"
-                  height="400"
-                  loading="lazy"
-                >
-              </div>
-            {% endif %}
-
-            <div class="beer-card__content">
-              <h3 class="beer-card__title">{{ beer.name.value }}</h3>
-
-              {% if beer.style.value != blank %}
-                <p class="beer-card__style">{{ beer.style.value }}</p>
-              {% endif %}
-
-              {% if beer.abv.value != blank %}
-                <p class="beer-card__abv">ABV: {{ beer.abv.value }}%</p>
-              {% endif %}
-
-              {% if beer.description.value != blank %}
-                <div class="beer-card__description">
-                  {{ beer.description.value }}
-                </div>
-              {% endif %}
-            </div>
-          </div>
-        {% endfor %}
-      {% else %}
-        <div class="beers-empty">
-          <p>No beers found.</p>
+      {% assign beers = metaobjects.drinks.values %}
+      <p>Beers size:{{ metaobjects.drinks | array }}</p>
+      {% for beer in beers %}
+        <div>
+          <img
+            src="{{ beer.thumbnail | img_url: '300x300' }}"
+            width="300"
+            height="300"
+            alt="{{ beer.title.value }}"
+          >
+          <h3>
+            {{ beer.title.value }}
+          </h3>
+          <p>
+            {{ beer.description.value }}
+          </p>
         </div>
-      {% endif %}
+      {% endfor %}
     </div>
   </div>
 </div>
